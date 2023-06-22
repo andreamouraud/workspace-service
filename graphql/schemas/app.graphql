@@ -1,0 +1,22 @@
+input CreateAppInput {
+  name: String!
+}
+
+input UpdateAppInput {
+  name: String
+}
+
+type App {
+  id: ID!
+  name: String!
+}
+
+extend type Query {
+  App(id: String!): App
+  Apps: [App!]!
+}
+
+extend type Mutation {
+  createApp(input: CreateAppInput!): App!
+  updateApp(id: String!, input: UpdateAppInput!): App!
+}

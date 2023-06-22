@@ -1,0 +1,23 @@
+input CreateUserInput {
+  name: String!
+}
+
+input UpdateUserInput {
+  name: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  groups: [Group!]!
+}
+
+extend type Query {
+  user(id: String!): User
+  users: [User!]!
+}
+
+extend type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: String!, input: UpdateUserInput!): User!
+}
